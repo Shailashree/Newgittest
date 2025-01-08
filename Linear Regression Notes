@@ -1,0 +1,82 @@
+# Linear Regression Notes
+
+Linear regression is a statistical and machine learning technique used to model the relationship between a dependent variable (target) and one or more independent variables (predictors). It assumes a linear relationship between the variables, meaning the target variable can be expressed as a linear combination of the predictors.
+Key Concepts:
+1.	Simple Linear Regression: Involves one independent variable and models the relationship as:
+y=b0+b1x+ϵy=b0+b1x+ϵ
+o	yy: Dependent variable
+o	xx: Independent variable
+o	b0b0: Intercept (value of yy when x=0x=0)
+o	b1b1: Slope (rate of change in yy for a unit change in xx)
+o	ϵϵ: Error term (captures variability not explained by the model)
+2.	Multiple Linear Regression: Involves multiple independent variables:
+y=b0+b1x1+b2x2+⋯+bnxn+ϵy=b0+b1x1+b2x2+⋯+bnxn+ϵ
+o	x1,x2,…,xnx1,x2,…,xn: Independent variables
+o	b1,b2,…,bnb1,b2,…,bn: Coefficients representing the effect of each predictor on yy
+Goals:
+•	Minimize the difference between predicted and actual values by finding the best-fit line (or hyperplane in higher dimensions).
+•	The most common method for finding the best-fit line is Ordinary Least Squares (OLS), which minimizes the sum of squared errors:SSE=∑i=1n(yi−y^i)2SSE=i=1∑n(yi−y^i)2 where yiyi is the actual value and y^iy^i is the predicted value.
+Assumptions:
+1.	Linearity: The relationship between predictors and the target is linear.
+2.	Independence: Observations are independent of each other.
+3.	Homoscedasticity: Constant variance of errors.
+4.	Normality: Errors are normally distributed.
+5.	No multicollinearity (for multiple regression): Predictors are not highly correlated.
+Applications:
+•	Predicting house prices based on features like size, location, etc.
+•	Estimating sales revenue from advertising spend.
+•	Identifying relationships between variables in research settings.
+
+
+
+Evaluation Metrics:
+•	R-squared (R2R2): Proportion of variance in the dependent variable explained by the independent variables.
+•	Mean Squared Error (MSE): Average of squared differences between actual and predicted values.
+•	Root Mean Squared Error (RMSE): Square root of MSE, useful for interpretability.
+Example:
+Given a dataset of house prices (yy) and their sizes (xx), a simple linear regression might output:
+Price=50000+150×SizePrice=50000+150×Size
+This means the base price is $50,000, and each additional square foot adds $150 to the price.
+Would you like to dive into an example, implement it in Python, or explore related concepts?
+
+
+The ideal value of metrics such as R2R2, Mean Squared Error (MSE), and Root Mean Squared Error (RMSE) depends on the context of the problem, the complexity of the data, and the domain expectations. Here's an explanation of what to aim for with each:
+ 
+1. R2R2 (R-squared):
+•	R2R2 measures the proportion of variance in the dependent variable (yy) explained by the independent variables (xx).
+Ideal Range:
+•	R2R2 values range from 0 to 1:
+o	0: The model explains none of the variance in the target variable.
+o	1: The model explains all the variance (perfect fit).
+Key Considerations:
+•	A higher R2R2 indicates better explanatory power, but:
+o	High R2R2: May indicate overfitting if the model is too complex for the data.
+o	Low R2R2: May still be acceptable in cases with high variability (e.g., human behavior, financial markets).
+•	For most practical applications, 0.7 to 0.9 is considered good, but this depends on the domain:
+o	Physical sciences: Higher R2R2 (close to 1) is expected.
+o	Social sciences or business: Lower R2R2 (e.g., 0.4 to 0.6) is more common due to high variability.
+ 
+2. Mean Squared Error (MSE):
+•	MSE is the average of the squared differences between actual and predicted values.
+Ideal Range:
+•	A lower MSE indicates better performance.
+•	The ideal MSE is close to 0, but the actual value depends on the scale of the dependent variable:
+o	If yy values range in the thousands, MSE could also be large.
+Key Considerations:
+•	MSE penalizes large errors more heavily than smaller ones due to squaring.
+•	Use MSE to compare models on the same dataset; smaller MSE = better model.
+ 
+3. Root Mean Squared Error (RMSE):
+•	RMSE is the square root of MSE, making it interpretable in the same units as the target variable (yy).
+Ideal Range:
+•	Like MSE, RMSE should be as low as possible.
+•	An RMSE close to the standard deviation of the dependent variable indicates the model's predictive power:
+o	If RMSE is much lower than the standard deviation, the model is good.
+o	If RMSE is similar to or higher than the standard deviation, the model isn't much better than guessing.
+ 
+How to Evaluate Together:
+1.	R2R2: Look for a balance between explanatory power and avoiding overfitting.
+2.	MSE and RMSE: Lower values indicate better performance but should be compared relative to the scale of the dependent variable.
+3.	Domain Context: Metrics should be interpreted based on domain-specific requirements. For example:
+o	In weather forecasting, small RMSE is critical.
+o	In marketing, a lower R2R2 might be acceptable due to inherent variability.
